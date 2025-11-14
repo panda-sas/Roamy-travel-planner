@@ -1,6 +1,20 @@
-# Roamy - AI Travel Planner
+# ✈️ Roamy - AI Travel Planner
 
-**Roamy** is a sophisticated trip planning agent built with **LangGraph** that helps users create personalized travel itineraries. This project replaces CrewAI with LangGraph to create a multi-agent workflow for comprehensive trip planning.
+**Roamy** is an intelligent AI-powered travel planning assistant that creates personalized, detailed travel itineraries using LangGraph. Plan your perfect trip with AI agents that research destinations, estimate budgets, and generate day-by-day schedules tailored to your interests.
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![LangGraph](https://img.shields.io/badge/LangGraph-0.2+-green.svg)](https://github.com/langchain-ai/langgraph)
+
+## 🌟 Overview
+
+Roamy leverages **LangGraph** to orchestrate a multi-agent workflow that:
+- 🔍 **Researches** destinations based on your preferences
+- 💰 **Estimates** budgets and costs
+- 📅 **Generates** detailed day-by-day itineraries
+- ✨ **Personalizes** recommendations to match your interests
+
+Built with modern AI technologies, Roamy provides a seamless experience for planning your next adventure.
 
 ## Features
 
