@@ -6,7 +6,21 @@ import os
 from dotenv import load_dotenv
 from agents.trip_planner import plan_trip, create_trip_planner_graph
 
+# Load environment variables
+# Streamlit Cloud uses st.secrets, local development uses .env
 load_dotenv()
+
+# Get API key from Streamlit secrets (production) or environment (local)
+def get_api_key():
+    """Get OpenAI API key from Streamlit secrets or environment."""
+    try:
+        # Try Streamlit secrets first (for Streamlit Cloud)
+        if hasattr(st, 'secrets') and 'OPENAI_API_KEY' in st.secrets:
+            return st.secrets['OPENAI_API_KEY']
+    except:
+        pass
+    # Fall back to environment variable (for local development)
+    return os.getenv("OPENAI_API_KEY")
 
 # Page configuration
 st.set_page_config(
@@ -87,9 +101,18 @@ with st.sidebar:
     st.markdown("---")
     
     # Check API key
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = get_api_key()
     if not api_key or api_key == "your_openai_api_key_here":
-        st.error("⚠️ Please set your OPENAI_API_KEY in the .env file")
+        st.error("⚠️ Please set your OPENAI_API_KEY")
+        st.info("""
+        **For Streamlit Cloud:**
+        - Go to Settings → Secrets
+        - Add: `OPENAI_API_KEY = "your-key-here"`
+        
+        **For Local Development:**
+        - Create a `.env` file
+        - Add: `OPENAI_API_KEY=your-key-here`
+        """)
         st.stop()
     else:
         st.success("✅ API Key configured")
